@@ -1,0 +1,22 @@
+{
+  "name": "staff-management",
+  "version": "1.0.0",
+  "description": "Staff Management Microservice compose of Express and MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/restaurantscruisearq2019/Staff-Management.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/restaurantscruisearq2019/Staff-Management/issues"
+  },
+  "homepage": "https://github.com/restaurantscruisearq2019/Staff-Management#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
