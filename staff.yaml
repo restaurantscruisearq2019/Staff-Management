@@ -1,0 +1,224 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for Staff-Management
+  description: Nodejs + MongoDB
+  license:
+    name: Proyecto Restaurantes
+host: 192.168.99.101:3000
+basePath: /restaurants
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /employees:
+    post:
+      summary: Creates a new employee
+      operationId: createEmployee
+      parameters:
+        - name: employee
+          in: body
+          required: true
+          description: Employee Object
+          schema:
+            $ref: '#/definitions/Employee'
+      responses:
+        '200':
+          description: Created
+        '406':
+          description: Bad Request
+    
+    get:
+      summary: Returns all employees
+      operationId: getAllEmployees
+      responses:
+        '200':
+          description: Ok
+        '406':
+          description: Bad Request
+         
+  /employees/{code}:
+    get:
+      summary: Returns a employee with the given code
+      operationId: getEmployeeByCode
+      parameters:
+        - name: code
+          in: path
+          description: The code of the employee to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+
+
+    put:
+      summary: Updates a employee with the given code
+      operationId: updateEmployee
+      parameters:
+        - name: code
+          in: path
+          description: The code of the employee to be updated
+          required: true
+          type: integer
+        - name: restaurant
+          in: body
+          required: true
+          description: Employee Object
+          schema:
+            $ref: '#/definitions/Employee'
+         
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+  
+
+    delete:
+      summary: Deletes a employee with the given code
+      operationId: deleteEmployee
+      parameters:
+        - name: code
+          in: path
+          description: The code of the employeee to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+
+  /managers:
+    post:
+      summary: Creates a new manager
+      operationId: createManager
+      parameters:
+        - name: manager
+          in: body
+          required: true
+          description: Manager Object
+          schema:
+            $ref: '#/definitions/Manager'
+      responses:
+        '200':
+          description: Created
+        '406':
+          description: Bad Request
+    
+    get:
+      summary: Returns all managers
+      operationId: getAllManagers
+      responses:
+        '200':
+          description: Ok
+        '406':
+          description: Bad Request
+         
+  /managers/{code}:
+    get:
+      summary: Returns a manager with the given code
+      operationId: getManagerByCode
+      parameters:
+        - name: code
+          in: path
+          description: The code of the manager to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+
+
+    put:
+      summary: Updates a manager with the given code
+      operationId: updateManager
+      parameters:
+        - name: code
+          in: path
+          description: The code of the manager to be updated
+          required: true
+          type: integer
+        - name: restaurant
+          in: body
+          required: true
+          description: Manager Object
+          schema:
+            $ref: '#/definitions/Manager'
+         
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+  
+
+    delete:
+      summary: Deletes a manager with the given code
+      operationId: deleteManager
+      parameters:
+        - name: code
+          in: path
+          description: The code of the Manager to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+
+definitions:
+
+  # Restaurants
+  Employee:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      job:
+        type: integer
+  
+  Manager:
+    type: object
+    properties:
+      id:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      name:
+        type: string
+      restaurantid:
+        type: string
+      employees:
+        type: array
+        items:
+          type: string
+
+#Errors
+  #ErrorModel:
+   # type: object
+    #required:
+      #- message
+      #- code
+    #properties:
+     # message:
+      #  type: string
+      #code:
+       # type: number
+      #description:
+       # type: object
