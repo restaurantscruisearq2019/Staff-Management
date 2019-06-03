@@ -6,7 +6,7 @@ const managerSchema = new Schema({
   userName: { type: String, default: "" },
   password: { type: String, default: "" },
   name: { type: String, default: "" },
-  restaurant: { type: String, default: "" },
+  restaurantid: { type: String, default: "" },
   employees: { type: [Schema.Types.ObjectId], ref: Employee, default: [] }
 });
 
