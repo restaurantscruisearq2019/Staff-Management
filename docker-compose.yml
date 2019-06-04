@@ -1,7 +1,7 @@
 version: "2"
 services:
   api:
-    image: arkai93/staff
+    image: miacastroco/staff
     restart: always
     ports:
       - "5002:5000"
