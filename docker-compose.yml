@@ -1,0 +1,34 @@
+version: "2"
+services:
+  api:
+    image: arkai93/staff
+    restart: always
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./api:/api
+      - /api/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - webappnetwork
+    links:
+      - mongodb
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - 27018:27017
+    command: mongod --noauth --smallfiles
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge
+
+volumes:
+  mongodata:
