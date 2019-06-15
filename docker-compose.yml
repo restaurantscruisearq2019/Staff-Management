@@ -4,24 +4,24 @@ services:
     image: miacastroco/staff
     restart: always
     ports:
-      - "5000:5000"
+      - "5003:5003"
     volumes:
       - ./api:/api
       - /api/node_modules
     depends_on:
-      - mongodb
+      - mongo
     networks:
       - webappnetwork
     links:
-      - mongodb
-  mongodb:
+      - mongo
+  mongo:
     image: mongo
     restart: always
-    container_name: mongodb
+    container_name: mongo
     volumes:
       - mongodata:/data/db
     ports:
-      - 27017:27017
+      - 27018:27017
     command: mongod --noauth --smallfiles
     networks:
       - webappnetwork
